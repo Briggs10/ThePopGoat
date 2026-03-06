@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">    
+<meta charset="UTF-8">
+<title>THE POP G.O.A.T</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+<!-- =========================
+        CSS STYLES
+========================= -->
+<style>
+
+/* GENERAL PAGE STYLE */
+body{
+font-family:'Bangers', cursive;
+text-align:center;
+margin:0;
+padding:40px;
+background:
+radial-gradient(circle at 15% 20%, #ff0055 0%, transparent 25%),
+radial-gradient(circle at 85% 30%, #00e1ff 0%, transparent 25%),
+radial-gradient(circle at 40% 85%, #ffe600 0%, transparent 25%),
+#111;
+
+color:white;
+}
+
+/* LEVEL CONTAINERS */
+/* GAME QUESTION PANEL */
+
+.level{
+display:none;
+
+max-width:700px;
+margin:60px auto;
+
+padding:40px;
+
+background:rgba(0,0,0,0.65);
+
+border:4px solid black;
+
+border-radius:12px;
+
+box-shadow:
+0 0 15px #ff0055,
+0 0 30px #00e1ff,
+6px 6px black;
+}
+p{
+font-size:28px;
+letter-spacing:1px;
+line-height:1.5;
+}
+/* PERSONA SCREEN */
+#personaScreen{    
+display:none;
+margin:100px;
+}
+
+/* PLAYER AVATAR */
+.avatar{
+font-size:70px;
+margin-top:20px;
+}
+
+/* STORE DISPLAY */
+.store{
+margin-top:10px;
+font-size:18px;
+color:#ffe600;
+}
+
+/* TEXT AREA */
+textarea{
+font-family:'Bangers', cursive;
+font-size:18px;
+padding:10px;
+border:4px solid black;
+box-shadow:4px 4px black;
+}
+
+/* BUTTON STYLE */
+button{
+font-family:'Bangers', cursive;
+padding:12px 25px;
+margin:10px;
+font-size:22px;
+background:#ff0055;
+color:white;
+border:4px solid black;
+box-shadow:5px 5px black;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{
+
+background:#00e1ff;
+
+color:black;
+
+transform:scale(1.1);
+
+box-shadow:
+0 0 10px #00e1ff,
+0 0 20px #ff00ff,
+6px 6px black;
+}{
+background:#00e1ff;
+color:black;
+transform:scale(1.1) rotate(-2deg);
+}
+
+/* FLASHING TITLE */
+.flashTitle{
+font-size:70px;
+letter-spacing:4px;
+color:white;
+
+animation:flashPop 1.75s infinite alternate;
+
+text-shadow:
+4px 4px black,
+8px 8px #ff00ff,
+12px 12px #00ffff;
+}
+
+@keyframes flashPop{
+0%{color:#ff0055;}
+50%{color:#ffe600;}
+100%{color:#00e1ff;}
+}
+
+/* AVATAR DANCE ANIMATION */
+.dance{
+animation:danceMove 0.5s infinite alternate;
+}
+
+@keyframes danceMove{
+0%{transform:rotate(-5deg)}
+100%{transform:rotate(5deg)}
+}
+
+/* STAGE GLOW EFFECT */
+.stageGlow{
+text-shadow:
+0 0 10px #fff,
+0 0 20px #ff00ff,
+0 0 30px #00ffff;
+}
+
+/* CONFETTI PIECES */
+.confetti{
+position:fixed;
+top:-10px;
+width:10px;
+height:10px;
+animation:fall 3s linear;
+}
+
+@keyframes fall{
+0%{transform:translateY(0)}
+100%{transform:translateY(100vh)}
+}
+/* PLAYER MONIKER DISPLAY */
+
+.playerName{
+font-size:28px;
+margin-top:5px;
+color:#ffe600;
+letter-spacing:2px;
+text-shadow:
+2px 2px black,
+4px 4px #ff00ff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+        WELCOME SCREEN
+========================= -->
+
+<div id="welcomeScreen">
+<h1 class="flashTitle">THE POP G.O.A.T</h1>
+<h1>Pop Triva. G.O.A.T Status.</h1>
+<button onclick="enterGame()">ENTER</button>
+</div>
+
+<!-- INTRO MUSIC -->
+
+<audio id="introMusic">
+<source src="pop_goat_intro.wav" type="audio/wav">
+</audio>
+
+<!-- PLAYER AVATAR DISPLAY -->
+
+<div id="avatarDisplay" class="avatar">🧑‍🎤👩‍🎤</div>
+
+<div id="playerName" class="playerName"></div>
+
+<div id="store" class="store"></div>
+
+<!-- =========================
+        PERSONA CREATION
+========================= -->
+
+<div id="personaScreen">
+
+<h1>CREATE A POP G.O.A.T</h1>
+
+<input id="name" placeholder="TYPE MONIKER"><br><br>
+
+<select id="avatarSelect">
+<option value="👩‍🎤">SOPARNO</option>
+<option value="🧑‍🎤">TENOR</option>
+</select>
+
+<br><br>
+
+<button onclick="startGame()">START</button>
+
+</div>
+
+<!-- =========================
+        LEVEL 1
+========================= -->
+
+<div id="level1" class="level">
+
+<h2>Level 1</h2>
+
+<h1 class="flashTitle">POP G.O.A.T INTERNET ARTIST</h1>
+
+<p>In 2020, this social media POP G.O.A.T earned the #1 song on Billboard Hot 100.</p>
+
+<button onclick="checkAnswer(1,false)">Kelly Clarkson</button>
+<button onclick="checkAnswer(1,true)">Doja Cat</button>
+<button onclick="checkAnswer(1,false)">Dua Lipa</button>
+
+</div>
+
+<!-- =========================
+        LEVEL 2
+========================= -->
+
+<div id="level2" class="level">
+
+<h3 class="flashTitle">POP G.O.A.T TRENDSETTERS</h3>
+
+<p>Which POP G.O.A.T wore a Japanese and cartoon inspired custom design to the Nokia Theatre L.A Live in 2011?.</p>
+
+<button onclick="checkAnswer(2,false)">Katy Perry</button>
+<button onclick="checkAnswer(2,false)">Pink</button>
+<button onclick="checkAnswer(2,true)">Nicki Minaj</button>
+
+</div>
+
+<!-- =========================
+        LEVEL 3
+========================= -->
+
+<div id="level3" class="level">
+
+<h3 class="flashTitle">POP G.O.A.T VIRAL DANCES </h3>
+
+<p> Not to be confused with the "Tamia Line Dance". In 2025, this POP G.O.A.T choreographed a 32 count viral Line Dance called the "__________".</p>
+
+<button onclick="checkAnswer(3,false)">Where Them Fans At</button>
+<button onclick="checkAnswer(3,true)">Cookout</button>
+<button onclick="checkAnswer(3,false)">Wobble</button>
+
+</div>
+
+<!-- =========================
+        LEVEL 4
+========================= -->
+
+<div id="level4" class="level">
+
+<h1 class="flashTitle">POP G.O.A.T INCIDENTS</h1>
+
+<p>"In 2023, Cardi B struck a concertgoer with a microphone after being hit with a "_____________"</p>
+
+<button onclick="checkAnswer(4,true)">Drink</button>
+<button onclick="checkAnswer(4,false)">Shoe</button>
+<button onclick="checkAnswer(4,false)">Phone</button>
+
+</div>
+
+<!-- =========================
+        LEVEL 5
+========================= -->
+
+<div id="level5" class="level">
+
+<h3 class="flashTitle">YOU WON THE POP &#x1F410; 👑</h3>
+
+<p>TYPE A THRITY SECOND POP SONG TO PERFORM LIKE A G.O.A.T!</p>
+
+<textarea id="lyrics" rows="4" cols="40"></textarea>
+
+<br><br>
+
+<button onclick="performSong()">🎤 PERFORM 🎤</button>
+
+</div>
+
+<!-- =========================
+        JAVASCRIPT LOGIC
+========================= -->
+
+<script>
+
+/* PLAYER DATA */
+
+let player = {
+name:"",
+avatar:"🧑",
+clothes:[]
+}
+
+/* PROFANITY FILTER */
+
+const bannedWords = [
+"fuck","shit","sex","bitch","damn",
+"hoe","pussy","ass","fucker","dick",
+"coochie","booty","vagina"
+]
+
+/* ENTER GAME */
+
+function enterGame(){
+
+document.getElementById("welcomeScreen").style.display="none"
+document.getElementById("personaScreen").style.display="block"
+
+let music=document.getElementById("introMusic")
+music.volume=0.5
+music.play()
+
+}
+
+/* START GAME */
+
+function startGame(){
+
+player.name=document.getElementById("name").value
+player.avatar=document.getElementById("avatarSelect").value
+
+document.getElementById("avatarDisplay").innerHTML=player.avatar
+
+document.getElementById("personaScreen").style.display="none"
+document.getElementById("playerName").innerHTML = player.name
+
+showLevel(1)
+
+}
+
+/* SHOW LEVEL */
+
+function showLevel(num){
+
+document.querySelectorAll(".level").forEach(level=>{
+level.style.display="none"
+})
+
+document.getElementById("level"+num).style.display="block"
+
+}
+
+/* CHECK ANSWER */
+
+function checkAnswer(level,correct){
+
+if(!correct){
+alert("DUST YOURSELF OFF & TRY AGAIN!")
+return
+}
+
+if(level==1){
+unlock("Custom Outfit")
+showLevel(2)
+}
+
+if(level==2){
+unlock("Designer Shoes")
+showLevel(3)
+}
+
+if(level==3){
+unlock("Certified Jewelry")
+showLevel(4)
+}
+
+if(level==4){
+unlock("POP G.O.A.T Crown")
+launchConfetti()
+showLevel(5)
+}
+
+}
+
+/* UNLOCK ITEMS */
+
+function unlock(item){
+
+player.clothes.push(item)
+
+document.getElementById("store").innerHTML =
+"Unlocked: " + player.clothes.join(", ")
+
+}
+
+/* LYRICS FILTER */
+
+function checkLyrics(text){
+
+let lower=text.toLowerCase()
+
+for(let word of bannedWords){
+if(lower.includes(word)){
+return false
+}
+}
+
+return true
+
+}
+
+/* PERFORM SONG */
+
+function performSong(){
+
+let lyrics=document.getElementById("lyrics").value
+
+if(!checkLyrics(lyrics)){
+alert("No profanity allowed. Keep it PG for the masses!")
+return
+}
+
+let avatar=document.getElementById("avatarDisplay")
+
+avatar.classList.add("dance")
+avatar.classList.add("stageGlow")
+
+let speech=new SpeechSynthesisUtterance(lyrics)
+
+speech.rate=0.9
+speech.pitch=1.2
+
+speechSynthesis.speak(speech)
+
+}
+
+/* CONFETTI EFFECT */
+
+function launchConfetti(){
+
+for(let i=0;i<60;i++){
+
+let conf=document.createElement("div")
+
+conf.className="confetti"
+conf.style.left=Math.random()*100+"%"
+
+conf.style.background =
+["red","yellow","blue","pink","lime"][Math.floor(Math.random()*5)]
+
+document.body.appendChild(conf)
+
+setTimeout(()=>conf.remove(),3000)
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
