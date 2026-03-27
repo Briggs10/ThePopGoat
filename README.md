@@ -62,3 +62,5 @@ An interactive browser-based trivia game where players rise through pop culture 
 
 📜 License:
 This project is for personal and educational use.
+
+Created and Designed by Shayla Briggs 
