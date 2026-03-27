@@ -59,3 +59,6 @@ An interactive browser-based trivia game where players rise through pop culture 
     Run Locally,
     Download or clone the repo.
     Open index.html in your browser.
+
+📜 License:
+This project is for personal and educational use.
